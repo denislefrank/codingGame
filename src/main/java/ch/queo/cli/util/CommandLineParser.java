@@ -1,16 +1,28 @@
-package ch.queo.cli;
+package ch.queo.cli.util;
 
 import ch.queo.cli.dto.ParsedArgument;
 import ch.queo.cli.option.ArgumentOption;
 import lombok.SneakyThrows;
+import lombok.experimental.UtilityClass;
 import lombok.val;
 import org.apache.commons.cli.DefaultParser;
 import org.apache.commons.cli.Options;
 
+/**
+ * Utility class for parsing command-line arguments into a structured format.
+ */
+@UtilityClass
 public class CommandLineParser {
 
+    /**
+     * Parses the provided command-line arguments and converts them into a {@link ParsedArgument} object.
+     *
+     * @param args The array of command-line arguments passed to the application.
+     * @return A {@link ParsedArgument} object containing the parsed input, output, and action values.
+     * @throws IllegalArgumentException if the mandatory arguments `-i` (input) or `-a` (action) are missing.
+     */
     @SneakyThrows
-    public static ParsedArgument parseArguments(String[] args) {
+    public ParsedArgument parseArguments(String[] args) {
 
         val options = new Options();
         options.addOption(ArgumentOption.INPUT.getShortOption(), ArgumentOption.INPUT.getLongOption(), true, ArgumentOption.INPUT.getDescription());
