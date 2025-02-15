@@ -1,5 +1,7 @@
 package ch.queo;
 
+import ch.queo.cli.action.AbstractAction;
+import ch.queo.cli.type.ActionType;
 import ch.queo.cli.util.CommandLineParser;
 import ch.queo.cli.util.InputParser;
 import lombok.extern.slf4j.Slf4j;
@@ -7,7 +9,6 @@ import lombok.val;
 
 import java.security.InvalidParameterException;
 import java.util.Arrays;
-import java.util.List;
 
 /**
  * Hello world!
@@ -21,8 +22,12 @@ public class App {
             log.info("Parsed Arguments " + parseArguments);
 
             // Read stdIn
-            List<Double> numbers = InputParser.readFromStdIn();
+            val numbers = InputParser.readFromStdIn();
             log.info(numbers.toString());
+
+            val result = AbstractAction.executeAction(ActionType.fromString(parseArguments.action()), numbers);
+            System.out.println("Your Result is " + result);
+
         } catch (InvalidParameterException e) {
             System.err.println(e.getMessage());
             System.exit(4);

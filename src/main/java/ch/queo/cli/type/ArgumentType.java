@@ -1,4 +1,4 @@
-package ch.queo.cli.option;
+package ch.queo.cli.type;
 
 import lombok.Getter;
 
@@ -6,7 +6,7 @@ import lombok.Getter;
  * Enum representing the command-line argument options for the application.
  */
 @Getter
-public enum ArgumentOption {
+public enum ArgumentType {
     /**
      * Represents the input option.
      */
@@ -33,7 +33,7 @@ public enum ArgumentOption {
      * @param longOption  The long form of the option (e.g., `--input`).
      * @param description A description explaining the purpose of the option.
      */
-    ArgumentOption(String shortOption, String longOption, String description) {
+    ArgumentType(String shortOption, String longOption, String description) {
         this.shortOption = shortOption;
         this.longOption = longOption;
         this.description = description;
