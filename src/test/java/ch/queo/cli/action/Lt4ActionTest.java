@@ -1,36 +1,35 @@
 package ch.queo.cli.action;
 
-import lombok.val;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class MinMaxActionTest {
+class Lt4ActionTest {
 
     static Stream<Arguments> provideTestCases() {
         return Stream.of(
-                Arguments.of(List.of(1.2, 3.4, 5.6, 7.8), "1.2,7.8"),
-                Arguments.of(List.of(-1.2, -3.4, -5.6, -7.8), "-7.8,-1.2"),
-                Arguments.of(List.of(-1.2, 3.4, 0.0, 7.8), "-1.2,7.8"),
-                Arguments.of(Collections.singletonList(42.0), "42.0,42.0"),
-                Arguments.of(List.of(0.0, 0.0, 0.0), "0.0,0.0")
+                Arguments.of(List.of(5.0, 6.5, 7.2, 4.1), "[]"),
+                Arguments.of(List.of(1.0, 2.5, 4.0), "[1.0, 2.5]"),
+                Arguments.of(List.of(), "[]"),
+                Arguments.of(List.of(1.0, 4.5, 6.0, 3.0, 8.0), "[1.0, 3.0]"),
+                Arguments.of(List.of(4.0, 4.0, 4.1), "[]"),
+                Arguments.of(List.of(10.0, 5.0, -3.0), "[-3.0]")
         );
     }
 
     @ParameterizedTest(name = "[{index}] Input: {0} -> Expected: {1}")
     @MethodSource("provideTestCases")
-    void testMinMaxAction(List<Double> numbers, String expectedResult) {
+    void testLt4Action(List<Double> numbers, String expectedResult) {
         // Arrange
-        val action = new MinMaxAction();
+        Lt4Action action = new Lt4Action();
 
         // Act
-        val result = action.execute(numbers);
+        String result = action.execute(numbers);
 
         // Assert
         assertEquals(expectedResult, result);
