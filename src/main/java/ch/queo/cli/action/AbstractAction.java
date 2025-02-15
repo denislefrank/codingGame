@@ -20,16 +20,13 @@ public abstract class AbstractAction {
      * @param actionType  The type of the action to execute (e.g., SUM).
      * @param inputValues The input values on which the action is to be performed.
      * @return The result of the action as a {@link String}.
-     * @throws IllegalArgumentException if the specified {@link ActionType} is not supported.
      */
     public static String executeAction(final ActionType actionType, final List<Double> inputValues) {
         // Add here all possible actionTypes
-        switch (actionType) {
-            case SUM:
-                return new SumAction().execute(inputValues);
-            default:
-                throw new IllegalArgumentException("Unsupported action: " + actionType);
-        }
+        return switch (actionType) {
+            case SUM -> new SumAction().execute(inputValues);
+            case MIN_MAX -> new MinMaxAction().execute(inputValues);
+        };
     }
 
     /**
@@ -38,5 +35,5 @@ public abstract class AbstractAction {
      * @param inputValues The input values on which the action is to be performed.
      * @return The result of the action as a {@link String}.
      */
-    protected abstract String execute(List<Double> inputValues);
+    protected abstract String execute(final List<Double> inputValues);
 }

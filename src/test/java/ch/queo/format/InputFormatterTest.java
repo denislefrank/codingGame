@@ -2,6 +2,7 @@ package ch.queo.format;
 
 import ch.queo.cli.dto.ParsedArgument;
 import ch.queo.cli.format.InputFormatter;
+import lombok.val;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -39,7 +40,7 @@ class InputFormatterTest {
     @DisplayName("Test valid CSV inputs")
     void testValidCsvInputs(String inputValue, ParsedArgument parsedArgument, List<Double> expectedOutput) {
         // Act
-        List<Double> result = InputFormatter.checkInputFormat(inputValue, parsedArgument);
+        val result = InputFormatter.checkInputFormat(inputValue, parsedArgument);
 
         // Assert
         assertNotNull(result);

@@ -1,5 +1,6 @@
 package ch.queo.cli.action;
 
+import lombok.val;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -26,10 +27,10 @@ public class SumActionTest {
     @MethodSource("provideSumTestData")
     void testExecute(List<Double> inputValues, String expected) {
         // Arrange
-        SumAction sumAction = new SumAction();
+        val sumAction = new SumAction();
 
         // Act
-        String result = sumAction.execute(inputValues);
+        val result = sumAction.execute(inputValues);
 
         // Assert
         assertEquals(expected, result);

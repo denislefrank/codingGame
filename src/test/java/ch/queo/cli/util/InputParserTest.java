@@ -62,7 +62,7 @@ class InputParserTest {
             assertThrows(expectedException, () -> InputParser.readFromStdIn(parsedArgument));
         } else {
             // otherwise, check values
-            List<Double> result = InputParser.readFromStdIn(parsedArgument);
+            val result = InputParser.readFromStdIn(parsedArgument);
             assertEquals(expectedOutput, result);
         }
     }
