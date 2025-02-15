@@ -4,9 +4,6 @@ import java.util.List;
 
 /**
  * Implementation of the {@link AbstractAction} that calculates the sum of a list of numbers.
- *
- * <p>This class overrides the {@link AbstractAction#execute(List)} method to perform
- * the sum calculation for the provided list of numbers.</p>
  */
 public class SumAction extends AbstractAction {
 
@@ -17,7 +14,7 @@ public class SumAction extends AbstractAction {
      * @return The sum of the numbers as a {@link String}.
      */
     @Override
-    public String execute(List<Double> numbers) {
+    public String execute(final List<Double> numbers) {
         double sum = numbers.stream().mapToDouble(Double::doubleValue).sum();
         return sum + "\n";
     }

@@ -22,7 +22,6 @@ public class App {
             log.info("Parsed Arguments " + parseArguments);
 
             val numbers = InputParser.readFromInput(parseArguments);
-            log.info(numbers.toString());
 
             val result = AbstractAction.executeAction(ActionType.fromString(parseArguments.action()), numbers);
             System.out.println("Your Result is " + result);
