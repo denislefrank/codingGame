@@ -26,6 +26,7 @@ public abstract class AbstractAction {
         return switch (actionType) {
             case SUM -> new SumAction().execute(inputValues);
             case MIN_MAX -> new MinMaxAction().execute(inputValues);
+            case LT4 -> new Lt4Action().execute(inputValues);
         };
     }
 

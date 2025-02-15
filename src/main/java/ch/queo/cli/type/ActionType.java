@@ -13,7 +13,8 @@ public enum ActionType {
      * Calculates the sum
      */
     SUM("sum"),
-    MIN_MAX("minMax");
+    MIN_MAX("minMax"),
+    LT4("lt4");
 
     private final String actionName;
 
