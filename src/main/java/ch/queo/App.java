@@ -21,13 +21,14 @@ public class App {
             val parseArguments = CommandLineParser.parseArguments(args);
             log.info("Parsed Arguments " + parseArguments);
 
-            // Read stdIn
-            val numbers = InputParser.readFromStdIn();
+            val numbers = InputParser.readFromInput(parseArguments);
             log.info(numbers.toString());
 
             val result = AbstractAction.executeAction(ActionType.fromString(parseArguments.action()), numbers);
             System.out.println("Your Result is " + result);
-
+        } catch (NumberFormatException e) {
+            System.err.println(e.getMessage());
+            System.exit(2);
         } catch (InvalidParameterException e) {
             System.err.println(e.getMessage());
             System.exit(4);

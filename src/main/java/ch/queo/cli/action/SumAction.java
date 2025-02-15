@@ -19,6 +19,6 @@ public class SumAction extends AbstractAction {
     @Override
     public String execute(List<Double> numbers) {
         double sum = numbers.stream().mapToDouble(Double::doubleValue).sum();
-        return String.valueOf(sum);
+        return sum + "\n";
     }
 }

@@ -20,7 +20,15 @@ public enum ArgumentType {
     /**
      * Represents the action option.
      */
-    ACTION("a", "action", "Action: sum, minMax oder lt4");
+    ACTION("a", "action", "Action: sum, minMax oder lt4"),
+    /**
+     * Represents the inputFormat
+     */
+    INPUT_FORMAT("f", "inputFormat", "Input format: csv (default) or json."),
+    /**
+     * Represents the outputFormat
+     */
+    OUTPUT_FORMAT("F", "outputFormat", "Output format: csv (default) or json.");
 
     private final String shortOption;
     private final String longOption;

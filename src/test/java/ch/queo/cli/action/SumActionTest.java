@@ -13,12 +13,12 @@ public class SumActionTest {
 
     private static Stream<Arguments> provideSumTestData() {
         return Stream.of(
-                Arguments.of(List.of(1.0, 2.0, 3.0), "6.0"),
-                Arguments.of(List.of(-1.0, -2.0, -3.0), "-6.0"),
-                Arguments.of(List.of(0.0, 0.0, 0.0), "0.0"),
-                Arguments.of(List.of(1.5, 2.5, 3.0), "7.0"),
+                Arguments.of(List.of(1.0, 2.0, 3.0), 6.0 + "\n"),
+                Arguments.of(List.of(-1.0, -2.0, -3.0), -6.0 + "\n"),
+                Arguments.of(List.of(0.0, 0.0, 0.0), 0.0 + "\n"),
+                Arguments.of(List.of(1.5, 2.5, 3.0), 7.0 + "\n"),
                 // empty input
-                Arguments.of(List.of(), "0.0")
+                Arguments.of(List.of(), 0.0 + "\n")
         );
     }
 
