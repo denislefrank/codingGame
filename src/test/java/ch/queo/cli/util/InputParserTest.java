@@ -1,6 +1,5 @@
-package ch.queo.util;
+package ch.queo.cli.util;
 
-import ch.queo.cli.util.InputParser;
 import lombok.val;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
