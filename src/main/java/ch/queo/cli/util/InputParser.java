@@ -1,12 +1,13 @@
 package ch.queo.cli.util;
 
+import ch.queo.cli.dto.ParsedArgument;
+import ch.queo.cli.format.InputFormatter;
 import lombok.experimental.UtilityClass;
 import lombok.extern.slf4j.Slf4j;
 import lombok.val;
 
 import java.util.List;
 import java.util.Scanner;
-import java.util.stream.Stream;
 
 /**
  * Utility class for parsing command-line values.
@@ -14,8 +15,15 @@ import java.util.stream.Stream;
 @UtilityClass
 @Slf4j
 public class InputParser {
-    private final String FLOATING_POINT_REGEX =
-            "^[+-]?(\\d+(\\.\\d*)?|\\.\\d+)([eE][+-]?\\d+)?$";
+
+    public List<Double> readFromInput(final ParsedArgument inputArgument) {
+        return switch (inputArgument.input()) {
+            case "FILE" -> throw new UnsupportedOperationException("File is not supported yet");
+            case "URL" -> throw new UnsupportedOperationException("URL is not supported yet");
+            case "-" -> readFromStdIn(inputArgument);
+            default -> throw new IllegalStateException("Unexpected value: " + inputArgument.input());
+        };
+    }
 
     /**
      * Reads a list of floating-point numbers from standard input.
@@ -24,7 +32,7 @@ public class InputParser {
      * @throws IllegalArgumentException if the input is empty
      * @throws NumberFormatException    if any value in the input is not a valid floating-point number
      */
-    public List<Double> readFromStdIn() {
+    public List<Double> readFromStdIn(final ParsedArgument parsedArgument) {
         log.info("Please provide a List of floating Numbers:");
         val scanner = new Scanner(System.in);
         val input = scanner.nextLine();
@@ -35,22 +43,6 @@ public class InputParser {
         }
 
         log.info("Your Input was " + input);
-
-        val inputValues = Stream.of(input.split(","))
-                .map(String::trim)
-                .toList();
-
-        for (val value : inputValues) {
-            if (!isValidFloatingPoint(value)) {
-                throw new NumberFormatException("Input has an not floating number: " + value);
-            }
-        }
-        return inputValues.stream()
-                .map(Double::parseDouble)
-                .toList();
-    }
-
-    private boolean isValidFloatingPoint(String value) {
-        return value.matches(FLOATING_POINT_REGEX);
+        return InputFormatter.checkInputFormat(input, parsedArgument);
     }
 }
