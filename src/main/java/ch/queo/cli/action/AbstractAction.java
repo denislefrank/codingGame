@@ -34,7 +34,7 @@ public abstract class AbstractAction {
      * Executes the specific logic for the action.
      *
      * @param inputValues The input values on which the action is to be performed.
-     * @return The result of the action as a {@link String}.
+     * @return The result of the action as a {@link Double}.
      */
     protected abstract String execute(final List<Double> inputValues);
 }
