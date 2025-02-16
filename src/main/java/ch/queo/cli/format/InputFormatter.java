@@ -7,12 +7,14 @@ import lombok.val;
 import java.security.InvalidParameterException;
 import java.util.List;
 
+/**
+ * Utility class for checking the formatting of the Input
+ */
 @UtilityClass
 public class InputFormatter {
 
     public List<Double> checkInputFormat(final String inputValue, final ParsedArgument parsedArgument) {
         if (parsedArgument.inputFormat().equals("csv")) {
-
             // fail fast
             if (inputValue.equals("[]")) {
                 throw new InvalidParameterException("Input is empty");
@@ -29,7 +31,7 @@ public class InputFormatter {
                 throw new NumberFormatException("Input has an not floating number: " + e.getMessage());
             }
         } else {
-            throw new UnsupportedOperationException();
+            throw new UnsupportedOperationException("Only CSV is supported at the moment");
         }
     }
 

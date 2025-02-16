@@ -4,13 +4,13 @@
   <groupId>ch.queo</groupId>
   <artifactId>CodingGame</artifactId>
   <name>CodingGame</name>
-  <version>1.0-SNAPSHOT</version>
+  <version>1.0</version>
   <url>http://www.denis.coding.game.com</url>
   <build>
     <plugins>
       <plugin>
         <artifactId>maven-shade-plugin</artifactId>
-        <version>3.4.1</version>
+        <version>${version.maven-shade-plugin}</version>
         <executions>
           <execution>
             <phase>package</phase>
@@ -74,7 +74,7 @@
       <dependency>
         <groupId>org.junit</groupId>
         <artifactId>junit-bom</artifactId>
-        <version>5.11.0</version>
+        <version>${version.junit-bom}</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
@@ -82,6 +82,13 @@
   </dependencyManagement>
   <properties>
     <maven.compiler.release>17</maven.compiler.release>
+    <version.commons-cli>1.9.0</version.commons-cli>
+    <version.projectlombok>1.18.36</version.projectlombok>
+    <version.mockito>5.2.0</version.mockito>
+    <version.slf4j-api>2.0.7</version.slf4j-api>
+    <version.maven-shade-plugin>3.4.1</version.maven-shade-plugin>
+    <version.junit-bom>5.11.0</version.junit-bom>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <version.junit-jupiter>5.9.3</version.junit-jupiter>
   </properties>
 </project>
