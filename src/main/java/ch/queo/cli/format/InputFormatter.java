@@ -29,7 +29,7 @@ public class InputFormatter {
                 throw new NumberFormatException("Input has an not floating number: " + e.getMessage());
             }
         } else {
-            throw new IllegalArgumentException();
+            throw new UnsupportedOperationException();
         }
     }
 

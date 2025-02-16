@@ -1,7 +1,6 @@
-package ch.queo.format;
+package ch.queo.cli.format;
 
 import ch.queo.cli.dto.ParsedArgument;
-import ch.queo.cli.format.InputFormatter;
 import lombok.val;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -28,7 +27,7 @@ class InputFormatterTest {
                 Arguments.of("[1.2, abc, 3.4]", new ParsedArgument("csv"), NumberFormatException.class),
                 Arguments.of("1.2, 3.4, 5.6", new ParsedArgument("csv"), InvalidParameterException.class),
                 Arguments.of("[1.2, , 3.4]", new ParsedArgument("csv"), NumberFormatException.class),
-                Arguments.of("[1.2, 3.4, 5.6]", new ParsedArgument("json"), IllegalArgumentException.class),
+                Arguments.of("[1.2, 3.4, 5.6}", new ParsedArgument("csv"), IllegalArgumentException.class),
                 Arguments.of("[]", new ParsedArgument("csv"), InvalidParameterException.class)
         );
     }
